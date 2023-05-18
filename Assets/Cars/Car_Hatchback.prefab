@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 7237436727474507917}
   - component: {fileID: -4285723453861275232}
   - component: {fileID: -8275863208507591144}
+  - component: {fileID: 2178166219118340426}
   m_Layer: 0
   m_Name: Car_Hatchback
   m_TagString: Untagged
@@ -482,3 +483,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0212607, y: 1.8792062, z: 3.9448109}
   m_Center: {x: -0.0008671284, y: 0.9268739, z: -0.0000009536743}
+--- !u!114 &2178166219118340426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8015099979608328759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d949c7d0aac0c4c84dbf25c8dfdad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20

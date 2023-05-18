@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
 
         GameObject newCar = Instantiate(cars[randomCarIndex], spawnPoints[randomSpawnIndex].position, spawnPoints[randomSpawnIndex].rotation);
 
-        Rigidbody carRigidbody = newCar.GetComponent<Rigidbody>();
-        carRigidbody.AddForce(newCar.transform.forward * forceMagnitude, ForceMode.VelocityChange);
+        //Rigidbody carRigidbody = newCar.GetComponent<Rigidbody>();
+        //carRigidbody.AddForce(newCar.transform.forward * forceMagnitude, ForceMode.VelocityChange);
         Destroy(newCar, timeToDestroy);
     }
 }

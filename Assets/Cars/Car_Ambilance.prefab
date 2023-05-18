@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 1696079738223395753}
   - component: {fileID: -8986036470278566414}
   - component: {fileID: -7827814553956958927}
+  - component: {fileID: 6397913720833481813}
   m_Layer: 0
   m_Name: Car_Ambilance
   m_TagString: Untagged
@@ -233,6 +234,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0885372, y: 2.513156, z: 4.8590775}
   m_Center: {x: 0, y: 1.236053, z: -0.23111916}
+--- !u!114 &6397913720833481813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072358578542041363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d949c7d0aac0c4c84dbf25c8dfdad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2531378127787626772
 GameObject:
   m_ObjectHideFlags: 0
