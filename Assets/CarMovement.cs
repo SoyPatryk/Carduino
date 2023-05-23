@@ -3,53 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 
-
 public class CarMovement : MonoBehaviour
 {
-    //public properties
-
+    // Public properties
     public float timeAccel;
+    public float force;
 
-
-    //Private properties
-    private float xAxis; 
-    private  Rigidbody _rb;
-    public int force;
-
+    // Private properties
+    private float xAxis;
+    private Rigidbody _rb;
     public static float horAxis;
-    private SerialPort serialPort = new SerialPort("COM9", 9600);
-
+    private SerialPort serialPort;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         InvokeRepeating("Acceleration", timeAccel, timeAccel);
 
-        // Obrim el port
+        // Inicializar el puerto serial
+        serialPort = new SerialPort("COM9", 9600);
+
+        // Abrir el puerto
         serialPort.Open();
 
-        // Temps màxim per intentar la connexió
-        serialPort.ReadTimeout = 100; // Milisegons
-
-
+        // Establecer tiempo máximo de espera para lectura
+        serialPort.ReadTimeout = 100; // Milisegundos
     }
 
-    public void Update()
+    private void Update()
     {
         xAxis = Input.GetAxis("Horizontal");
 
-        // Fem servir el bloc try/catch per a evitar excepcions,
-        // per exemple, quan no li arriba cap informació
         try
         {
-            // Si arriba informació...
+            // Leer datos del puerto serial si está abierto
             if (serialPort.IsOpen)
             {
-                // Llegim una línia i la guardem a una variable string
-                // traient amb Trim els espais en blanc per davant i pel darrera
-                string dades = serialPort.ReadLine().Trim();
-                Debug.Log(dades);
-                switch (dades)
+                string data = serialPort.ReadLine().Trim();
+                Debug.Log(data);
+
+                switch (data)
                 {
                     case "L":
                         horAxis = Mathf.Lerp(horAxis, -10f, 10f * Time.deltaTime);
@@ -70,22 +63,16 @@ public class CarMovement : MonoBehaviour
         {
             Debug.Log(ex.Message);
         }
-
-
     }
 
-    //public void FixedUpdate()
-    //{
-    //    Vector3 forceVector = new Vector3(xAxis * force, 0f, 0f);
-    //    _rb.AddForce(forceVector);
-
-    //}
-    
-    public void Acceleration() 
+    private void FixedUpdate()
     {
+        Vector3 forceVector = new Vector3(horAxis * force, 0f, 0f);
+        _rb.AddForce(forceVector);
+    }
 
-        force++;
-
-            
+    private void Acceleration()
+    {
+        force = force + 0.1f;
     }
 }
